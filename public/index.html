@@ -1,0 +1,73 @@
+<!<!DOCTYPE>
+<html ng-app="myApp">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <title>Ecommerce Management</title>
+</head>
+<body>
+    <div class="container" ng-controller="AppCtrl">
+        <h1>Ecommerce do L :D</h1>
+        <br />
+        <table class="table">
+            <input class="form-control" placeholder="Pesquise..." ng-model="busca">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Peso</th>
+                    <th>Valor</th>
+                    <th>Action</th>
+                    <th>&nbsp</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input class="form-control" ng-model="product.nome">
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="product.descricao">
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="product.categoria">
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="product.peso">
+                    </td>
+                    <td>
+                        <input class="form-control" ng-model="product.valor">
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" ng-click="addProduct()">Adicionar</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-info" ng-click="update()">Atualizar</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-info" ng-click="deselect()">Limpar</button>
+                    </td>
+                </tr>
+                <tr ng-repeat="product in products | filter:busca">
+                    <td>{{product.nome}}</td>
+                    <td>{{product.descricao}}</td>
+                    <td>{{product.categoria}}</td>
+                    <td>{{product.peso}}</td>
+                    <td>{{product.valor}}</td>
+                    <td><button class="btn btn-danger" ng-click="remove(product._id)">Excluir</button></td>
+                    <td><button class="btn btn-warning" ng-click="edit(product._id)">Editar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="controllers/controller.js"></script>
+</body>
+</html>
